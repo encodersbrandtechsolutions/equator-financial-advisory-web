@@ -1,99 +1,103 @@
-<nav class="bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex items-center">
-                <div class="flex-shrink-0">
-                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                        alt="Workflow">
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a routerLink="/" [routerLinkActiveOptions]="{exact:
-                            true}" routerLinkActive #rlaHome="routerLinkActive"
-                            class="{{ rlaHome.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium"
-                            aria-current="page">Home</a>
-
-                        <a routerLink="/about-us" routerLinkActive #rlaAbout="routerLinkActive"
-                            class="{{ rlaAbout.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">About
-                            Us</a>
-
-                        <a routerLink="/services" routerLinkActive #rlaServices="routerLinkActive"
-                            class="{{ rlaServices.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Services</a>
-
-                        <a routerLink="/team" routerLinkActive #rlaTeam="routerLinkActive"
-                            class="{{ rlaTeam.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Team</a>
-
-                        <a routerLink="/certificates" routerLinkActive #rlaCertificates="routerLinkActive"
-                            class="{{ rlaCertificates.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Certificates</a>
-
-                        <a routerLink="/contact-us" routerLinkActive #rlaContact="routerLinkActive"
-                            class="{{ rlaContact.isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="-mr-2 flex md:hidden">
-                <!-- Mobile menu button -->
-                <button type="button"
-                    class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                    aria-controls="mobile-menu" [attr.aria-expanded]="dropdown">
-                    <span class="sr-only">Open main menu</span>
-                    <!--
-                Heroicon name: outline/menu
-  
-                Menu open: "hidden", Menu closed: "block"
-              -->
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="dropdown">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <!--
-                Heroicon name: outline/x
-  
-                Menu open: "block", Menu closed: "hidden"
-              -->
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+<div class="h-24 z-50 relative container mx-auto px-6 grid grid-cols-3">
+  <div class="flex items-center">
+    <button *ngIf="!showMenu" (click)="showMenu = true">
+      <svg
+        class="w-8 h-8 text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+    <div
+      class="fixed inset-0 w-full h-full bg-white z-50 text-yellow-900"
+      [ngClass]="{ hidden: !showMenu, block: showMenu }"
+    >
+      <div
+        class="container h-full mx-auto px-6 py-8 relative z-10 flex flex-col items-center justify-center text-2xl uppercase font-bold tracking-widest space-y-6"
+      >
+        <button
+          (click)="showMenu = false"
+          class="absolute top-0 left-0 mt-8 ml-6"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </button>
+        <a
+          (click)="showMenu = false"
+          routerLink="/"
+          class="inline-block border-b-4 border-transparent hover:border-yellow-900"
+          >Home</a
+        >
+        <a
+          (click)="showMenu = false"
+          routerLink="/about-us"
+          class="inline-block border-b-4 border-transparent hover:border-yellow-900"
+          >About</a
+        >
+        <a
+          (click)="showMenu = false"
+          routerLink="/services"
+          class="inline-block border-b-4 border-transparent hover:border-yellow-900"
+          >Services</a
+        >
+        <a
+          (click)="showMenu = false"
+          routerLink="/contact-us"
+          class="inline-block border-b-4 border-transparent hover:border-yellow-900"
+          >Contact</a
+        >
+      </div>
+      <div
+        class="absolute inset-0 w-full h-full bg-yellow-900 bg-opacity-20"
+      ></div>
     </div>
-
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="md:hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a routerLink="/" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-                aria-current="page">Home</a>
-
-            <a routerLink="/about-us"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About
-                Us</a>
-
-            <a routerLink="/services"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
-
-            <a routerLink="/team"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-            <a routerLink="/certificates"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Certificates</a>
-
-            <a routerLink="/contact-us"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact
-                Us</a>
-        </div>
-    </div>
-</nav>
-
-<header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">
-            {{ pageTitle }}
-        </h1>
-    </div>
-</header>
+  </div>
+  <div class="flex items-center justify-center">
+    <a
+      routerLink="/"
+      class="text-white uppercase font-bold text-2xl tracking-widest"
+      ><img src="/assets/logo.png" class="w-44 rounded-full"
+    /></a>
+  </div>
+  <div class="flex items-center justify-end">
+    <a routerLink="/contact-us"
+      ><svg
+        class="w-8 h-8 text-white"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</div>
+<div
+  class="w-full h-24 bg-yellow-900 bg-opacity-95 absolute top-0 left-0"
+></div>
