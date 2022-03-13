@@ -13,24 +13,21 @@ export class ContactComponent implements OnInit {
   showSuccessAlert = false;
   showErrorAlert = false;
   form = this.fb.group({
-    name: ['Rahul Rajpal', Validators.required],
+    name: ['', Validators.required],
     age: [
-      31,
+      '',
       [Validators.required, Validators.pattern('[0-9]{2}'), Validators.min(18)],
     ],
-    contactNumber: [
-      9340423746,
-      [Validators.required, Validators.pattern('[0-9]{10}')],
-    ],
-    companyName: ['Aarav Infotech', [Validators.required]],
-    netSalary: [200000, [Validators.required, Validators.min(0)]],
+    contactNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    companyName: ['', [Validators.required]],
+    netSalary: ['', [Validators.required, Validators.min(0)]],
     workingSince: [
-      2015,
+      '',
       [Validators.min(1970), Validators.max(new Date().getFullYear())],
     ],
-    currentLoansEmi: [20000, [Validators.required, Validators.min(0)]],
-    requiredLoanAmount: [500000, [Validators.required, Validators.min(0)]],
-    location: ['Indore', Validators.required],
+    currentLoansEmi: ['', [Validators.required, Validators.min(0)]],
+    requiredLoanAmount: ['', [Validators.required, Validators.min(0)]],
+    location: ['', Validators.required],
   });
 
   submitting = false;

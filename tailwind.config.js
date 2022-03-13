@@ -1,6 +1,6 @@
 module.exports = {
   // mode: 'jit',
-  purge: ['./src/**/*.{html,ts}'],
+  purge: ["./src/**/*.{html,ts}", "./src/**/**/*.{html,ts}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
@@ -8,9 +8,10 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/aspect-ratio')
-,require('@tailwindcss/forms')
-,require('@tailwindcss/line-clamp')
-,require('@tailwindcss/typography')
-],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };
